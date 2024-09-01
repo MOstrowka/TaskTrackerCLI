@@ -16,7 +16,7 @@ Task Tracker CLI is a simple command-line interface (CLI) application for tracki
 1. **Clone the repository:**
 
    ```bash
-   git clone <URL_OF_YOUR_REPOSITORY>
+   gh repo clone Miniomamen/TaskTrackerCLI
    cd TaskTrackerCLI
    ```
 

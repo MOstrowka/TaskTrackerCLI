@@ -110,54 +110,12 @@ def mark_task_done(task_id):
     print(f"No task found with ID {task_id}.")
 
 
-# Function to display help information
-def show_help():
-    help_text = """
-Task Tracker CLI - Available Commands:
-
-1. Add a new task:
-   task-cli add "Task description"
-   Example: task-cli add "Buy groceries"
-
-2. Update an existing task:
-   task-cli update <id> "New description"
-   Example: task-cli update 1 "Buy groceries and cook dinner"
-
-3. Delete a task:
-   task-cli delete <id>
-   Example: task-cli delete 1
-
-4. Mark a task as in progress:
-   task-cli mark-in-progress <id>
-   Example: task-cli mark-in-progress 1
-
-5. Mark a task as done:
-   task-cli mark-done <id>
-   Example: task-cli mark-done 1
-
-6. List all tasks:
-   task-cli list
-
-7. List tasks by status:
-   task-cli list <status>
-   Available statuses: todo, in-progress, done
-   Examples: 
-   task-cli list todo
-   task-cli list done
-   task-cli list in-progress
-
-8. Display help:
-   task-cli help
-   """
-    print(help_text)
-
-
 # Main function to handle CLI commands
 def main():
     parser = argparse.ArgumentParser(description="Task Tracker CLI")
 
     # Subparsers for different commands
-    subparsers = parser.add_subparsers(dest='command')
+    subparsers = parser.add_subparsers(dest='command', help='Available commands')
 
     # Command to add a new task
     add_parser = subparsers.add_parser('add', help='Add a new task')
@@ -185,10 +143,13 @@ def main():
     done_parser = subparsers.add_parser('mark-done', help='Mark a task as done')
     done_parser.add_argument('id', type=int, help='ID of the task to mark as done')
 
-    # Command to display help
-    help_parser = subparsers.add_parser('help', help='Display help information')
-
+    # Parse arguments
     args = parser.parse_args()
+
+    # Display help if no command is provided
+    if not args.command:
+        parser.print_help()
+        sys.exit(1)
 
     # Handle each command based on input
     if args.command == 'add':
@@ -203,8 +164,6 @@ def main():
         mark_task_in_progress(args.id)
     elif args.command == 'mark-done':
         mark_task_done(args.id)
-    elif args.command == 'help':
-        show_help()
     else:
         parser.print_help()
 

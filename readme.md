@@ -129,7 +129,3 @@ These properties are stored in a JSON file (`tasks.json`) and are updated whenev
 ## Project URL
 
 For more details about this project, visit the [Task Tracker Project Page](https://roadmap.sh/projects/task-tracker).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

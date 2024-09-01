@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from datetime import datetime
+import sys
 
 # Define the path for the tasks JSON file
 TASKS_FILE = 'tasks.json'
